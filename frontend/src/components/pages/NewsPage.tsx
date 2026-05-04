@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { Calendar, Clock, TrendingUp, TrendingDown, Globe, AlertTriangle, Zap, DollarSign, BarChart3, Newspaper, Eye, Share2, Bookmark, Search, Filter, RefreshCw, X, ChevronRight, ArrowTrendingUp, ArrowTrendingDown, Minus, Bell, TrendingUp as TrendingIcon, Users, MessageSquare, ThumbsUp, ThumbsDown } from 'lucide-react'
+import { Calendar, Clock, TrendingUp, TrendingDown, Globe, AlertTriangle, Zap, DollarSign, BarChart3, Newspaper, Eye, Share2, Bookmark, Search, Filter, RefreshCw, X, ChevronRight, Minus, Bell, TrendingUp as TrendingIcon, Users, MessageSquare, ThumbsUp, ThumbsDown } from 'lucide-react'
 
 interface NewsArticle {
   id: string
@@ -874,7 +874,7 @@ const NewsPage: React.FC = () => {
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm font-semibold text-green-700">Positive News</span>
                   <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                    <ArrowTrendingUp className="w-5 h-5 text-green-600" />
+                    <TrendingUp className="w-5 h-5 text-green-600" />
                   </div>
                 </div>
                 <div className="text-3xl sm:text-4xl font-bold text-green-900 mb-2">
@@ -892,7 +892,7 @@ const NewsPage: React.FC = () => {
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm font-semibold text-red-700">Negative News</span>
                   <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                    <ArrowTrendingDown className="w-5 h-5 text-red-600" />
+                    <TrendingDown className="w-5 h-5 text-red-600" />
                   </div>
                 </div>
                 <div className="text-3xl sm:text-4xl font-bold text-red-900 mb-2">

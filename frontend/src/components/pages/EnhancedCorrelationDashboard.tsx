@@ -308,7 +308,7 @@ const EnhancedCorrelationDashboard: React.FC = () => {
                     }
                     
                     const correlation = getCorrelationFromMatrix(crypto1, crypto2)
-                    const coefficient = correlation?.correlation
+                    const coefficient = correlation?.correlation?.coefficient
                     const color = coefficient !== undefined ? backendCorrelationService.getCorrelationColor(coefficient) : 'bg-gray-200'
                     const textColor = coefficient !== undefined ? backendCorrelationService.getCorrelationTextColor(coefficient) : 'text-gray-500'
                     const value = coefficient !== undefined ? backendCorrelationService.formatCorrelation(coefficient) : '0.000'
@@ -367,8 +367,8 @@ const EnhancedCorrelationDashboard: React.FC = () => {
               
               <div className="flex items-center space-x-4">
                 <div className="text-right">
-                  <div className={`font-bold ${pair.correlation !== undefined ? backendCorrelationService.getCorrelationTextColor(pair.correlation) : 'text-gray-500'}`}>
-                    {backendCorrelationService.formatCorrelation(pair.correlation)}
+                  <div className={`font-bold ${pair.correlation?.coefficient !== undefined ? backendCorrelationService.getCorrelationTextColor(pair.correlation.coefficient) : 'text-gray-500'}`}>
+                    {backendCorrelationService.formatCorrelation(pair.correlation?.coefficient)}
                   </div>
                   {renderTrendIndicator(pair.rolling)}
                 </div>

@@ -26,6 +26,7 @@ import { marketDataService } from '../../services/marketDataService'
 import { backendCorrelationService } from '../../services/backendCorrelationService'
 import { authService } from '../../services/authService'
 import type { Crypto } from '../../services/cryptoDataService'
+import type { Stock } from '../../services/marketDataService'
 import type { TradingSignal } from '../../services/backendCorrelationService'
 
 interface Asset {

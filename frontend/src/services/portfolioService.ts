@@ -54,12 +54,29 @@ export interface Order {
   filledQuantity?: number
 }
 
+export interface PortfolioConfig {
+  id: string
+  name: string
+  description: string
+  initialCapital: number
+  commissionRate: number
+  riskLevel: 'conservative' | 'moderate' | 'aggressive'
+  maxPositionSize: number
+  stopLossPercentage: number
+  takeProfitPercentage: number
+  createdAt: Date
+  isActive: boolean
+  portfolio: Portfolio
+}
+
 class PortfolioService {
   private initialCapital = 100000
   private commissionRate = 0 // Free trading for paper trading
   private portfolio: Portfolio
   private orders: Order[] = []
   private subscribers: ((portfolio: Portfolio) => void)[] = []
+  private portfolioConfigs: PortfolioConfig[] = []
+  private activeConfigId: string = 'conservative'
 
   constructor() {
     this.portfolio = this.initializePortfolio()
@@ -472,6 +489,7 @@ class PortfolioService {
 
     this.portfolio.totalTrades = this.portfolio.trades.filter(t => t.type === 'SELL').length
     this.portfolio.winRate = this.portfolio.totalTrades > 0 ? (profitableTrades.length / this.portfolio.totalTrades) * 100 : 0
+    return this.portfolio.winRate
   }
 
   private startPortfolioUpdates(): void {
