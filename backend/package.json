@@ -1,0 +1,30 @@
+{
+  "name": "cryptoquantix-backend",
+  "version": "1.0.0",
+  "description": "Backend API for CryptoQuantix application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server-sqlite.js",
+    "dev": "nodemon server-sqlite.js",
+    "setup:database": "node scripts/setup-database.js",
+    "test:db": "node -e \"const { testConnection, initializeDatabase } = require('./database/connection'); testConnection().then(connected => { if (connected) { initializeDatabase().then(() => console.log('Database test passed')).catch(err => console.error('Database test failed:', err)); } else { console.error('Database connection failed'); } });\"",
+    "seed:db": "node -e \"const databaseService = require('./services/databaseService'); databaseService.initialize().then(() => { console.log('Database seeded successfully'); }).catch(err => console.error('Database seeding failed:', err));\""
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "ws": "^8.13.0",
+    "dotenv": "^16.0.3",
+    "pg": "^8.11.0",
+    "sqlite3": "^5.1.6",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "keywords": ["trading", "cryptocurrency", "api"],
+  "author": "CryptoQuantix",
+  "license": "MIT"
+}
